@@ -8,7 +8,8 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 # the proper components so that the result is placed in the variable
 # `NEW_VERSION`.
 #
-# $1 = mode (major, minor, patch)
+# $1 = mode (major, minor, 
+)
 # $2 = version (x.y.z)
 #
 function bump {
@@ -71,7 +72,7 @@ elif git log -1 | grep -q "#minor"; then
 elif git log -1 | grep -q "#patch"; then
     BUMP_MODE="patch"
 elif [[ "${AUTO}" == "true" ]]; then
-    BUMP_MODE="auto"
+    BUMP_MODE="patch"
 fi
 
 if [ -f ./pom.xml ]; then
