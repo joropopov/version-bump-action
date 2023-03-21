@@ -29,20 +29,24 @@ function bump {
         NEW_VERSION="${parts[0]}.${parts[1]}.${bv}"
         ;;
     auto)
-        if [ "${AUTO_HIGHER}" == "true" ] && [[ "${parts[2]}" == *"${AUTO_SPLITTER}${AUTO_SUFFIX}"* ]]; then
-            local higher=(${parts[2]//${AUTO_SPLITTER}${AUTO_SUFFIX}/ })
-            local bv=$((higher[1] + 1))
-            NEW_VERSION="${parts[0]}.${parts[1]}.$((parts[2] + 0))${AUTO_SPLITTER}${AUTO_SUFFIX}${bv}"
-        elif [ "${AUTO_HIGHER}" == "false" ] && [[ "${parts[2]}" == *"${AUTO_SPLITTER}${AUTO_SUFFIX}"* ]]; then
-            local higher=(${parts[2]//${AUTO_SPLITTER}${AUTO_SUFFIX}/ })
-            local bv=$((higher[1] + 0))
-            NEW_VERSION="${parts[0]}.${parts[1]}.$((parts[2] + 0))${AUTO_SPLITTER}${AUTO_SUFFIX}${bv}"
-        elif [ "${AUTO_HIGHER}" == "true" ]; then
-            NEW_VERSION="${parts[0]}.${parts[1]}.$((parts[2] + 0))${AUTO_SPLITTER}${AUTO_SUFFIX}0"
-        else
-            NEW_VERSION="${parts[0]}.${parts[1]}.$((parts[2] + 0))${AUTO_SPLITTER}${AUTO_SUFFIX}"
-        fi
+#     Same as patch
+        local bv=$((parts[2] + 1))
+        NEW_VERSION="${parts[0]}.${parts[1]}.${bv}"
         ;;
+#         if [ "${AUTO_HIGHER}" == "true" ] && [[ "${parts[2]}" == *"${AUTO_SPLITTER}${AUTO_SUFFIX}"* ]]; then
+#             local higher=(${parts[2]//${AUTO_SPLITTER}${AUTO_SUFFIX}/ })
+#             local bv=$((higher[1] + 1))
+#             NEW_VERSION="${parts[0]}.${parts[1]}.$((parts[2] + 0))${AUTO_SPLITTER}${AUTO_SUFFIX}${bv}"
+#         elif [ "${AUTO_HIGHER}" == "false" ] && [[ "${parts[2]}" == *"${AUTO_SPLITTER}${AUTO_SUFFIX}"* ]]; then
+#             local higher=(${parts[2]//${AUTO_SPLITTER}${AUTO_SUFFIX}/ })
+#             local bv=$((higher[1] + 0))
+#             NEW_VERSION="${parts[0]}.${parts[1]}.$((parts[2] + 0))${AUTO_SPLITTER}${AUTO_SUFFIX}${bv}"
+#         elif [ "${AUTO_HIGHER}" == "true" ]; then
+#             NEW_VERSION="${parts[0]}.${parts[1]}.$((parts[2] + 0))${AUTO_SPLITTER}${AUTO_SUFFIX}0"
+#         else
+#             NEW_VERSION="${parts[0]}.${parts[1]}.$((parts[2] + 0))${AUTO_SPLITTER}${AUTO_SUFFIX}"
+#         fi
+#         ;;
     esac
 }
 
