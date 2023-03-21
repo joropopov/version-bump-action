@@ -8,8 +8,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 # the proper components so that the result is placed in the variable
 # `NEW_VERSION`.
 #
-# $1 = mode (major, minor, 
-)
+# $1 = mode (major, minor, patch)
 # $2 = version (x.y.z)
 #
 function bump {
